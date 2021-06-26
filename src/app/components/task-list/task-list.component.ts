@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { TaskI } from 'src/app/model/task';
 
 @Component({
@@ -11,11 +12,23 @@ export class TaskListComponent implements OnInit {
   public tasksCompleted: TaskI[] = [];
   public tasksNoComnpleted: TaskI[] = []; 
   public isShowInputTask: boolean = false;
+  public desc: FormControl = new FormControl('', [Validators.required]);
 
-  constructor() { }
+  constructor() {}
 
   showInputTask(){
-    this.isShowInputTask = !this.isShowInputTask;
+    this.isShowInputTask = true;
+  }
+
+  addTask(){
+    const task: TaskI = {
+      date: new Date(),
+      desciption: this.desc.value,
+      isComplete: false
+    }
+    this.tasksNoComnpleted.push(task);
+    this.desc.reset();
+    this.isShowInputTask = false;
   }
 
   ngOnInit(): void {
