@@ -1,1 +1,37 @@
-<p>task-list works!</p>
+<div class="card mt-4 p-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Things to do.</h2>
+            <div class="row" *ngIf="tasksNoComnpleted.length > 0; else NoTaskToDo">
+                {{ tasksNoComnpleted }}
+            </div>
+            <ng-container #NoTaskToDo>
+                <p>Congratuletion, no have task to do</p>
+            </ng-container>            
+            <button *ngIf="!isShowInputTask" (click)="showInputTask()" class="btn btn-primary">Add Task</button>
+
+            <div *ngIf="isShowInputTask" class="input-group">
+                <input type="text" class="form-control" placeholder="Enter description task">
+                <span>
+                    <button class="btn btn-primary rounded-0" (click)="showInputTask()">Añadir</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2>To do</h2>
+            <div class="row" *ngIf="tasksComnpleted.length > 0">
+                {{ tasksComnpleted }}
+            </div>
+            <button class="btn btn-primary">Hidden task completed</button>
+            <ng-container #NoTaskCompleted>
+                <p>No have task completed</p>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+
+
+
