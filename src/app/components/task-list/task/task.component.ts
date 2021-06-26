@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { TaskI } from 'src/app/model/task';
 
 @Component({
   selector: 'app-task',
@@ -6,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent{
+
+  @Input() task: TaskI;
+  @Input() index: number;
+
+  @Output() check = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  onCheck(){
+   this.check.emit(this.index);
+  }
+
+  onDelete(){
+    this.delete.emit(this.index);
   }
 
 }

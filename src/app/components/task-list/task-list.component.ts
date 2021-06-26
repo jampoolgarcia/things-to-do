@@ -23,12 +23,24 @@ export class TaskListComponent implements OnInit {
   addTask(){
     const task: TaskI = {
       date: new Date(),
-      desciption: this.desc.value,
+      description: this.desc.value,
       isComplete: false
     }
     this.tasksNoComnpleted.push(task);
     this.desc.reset();
     this.isShowInputTask = false;
+  }
+
+  delete(index:number){
+    this.tasksNoComnpleted.splice(index, 1);
+  }
+
+  check(index:number){
+    let task: TaskI = this.tasksNoComnpleted[index];
+    task.date = new Date();
+    task.isComplete = true;
+    this.tasksCompleted.push(task);
+    this.delete(index);
   }
 
   ngOnInit(): void {

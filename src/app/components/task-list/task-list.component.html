@@ -1,17 +1,33 @@
-<div class="card mt-4 p-4">
+<div class="card my-4 p-4 shadow bg">
     <div class="row mb-4">
         <div class="col-12">
             <h2>Things to do.</h2>
             <div class="row" *ngIf="tasksNoComnpleted.length > 0; else NoTaskToDo">
-                {{ tasksNoComnpleted | json }}
+                <div class="col-12 mb-2">
+                    <app-task 
+                        *ngFor="let task of tasksNoComnpleted; index as index" 
+                        [task]="task" 
+                        [index]="index"
+                        (delete)="delete($event)"
+                        (check)="check($event)">
+                    </app-task>
+                </div>
             </div>
                        
             <button *ngIf="!isShowInputTask" (click)="showInputTask()" class="btn btn-primary">Add Task</button>
 
             <div *ngIf="isShowInputTask" class="input-group">
-                <input type="text" class="form-control" placeholder="Enter description task" [formControl]="desc">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter description task" 
+                    [formControl]="desc"
+                    (keydown.enter)="addTask()">
                 <span>
-                    <button class="btn btn-primary rounded-0" [disabled]="desc.invalid" (click)="addTask()">Añadir</button>
+                    <button 
+                    class="btn btn-primary rounded-0" 
+                    [disabled]="desc.invalid" 
+                    (click)="addTask()">Añadir</button>
                 </span>
             </div>
         </div> 
@@ -20,7 +36,13 @@
         <div class="col-12">
             <h2>To do</h2>
             <div class="row" *ngIf="tasksCompleted.length > 0; else NoTaskCompleted">
-                {{ tasksComnpleted | json }}
+                <div class="col-12 mb-2">
+                    <app-task 
+                        *ngFor="let task of tasksCompleted; index as index" 
+                        [task]="task" 
+                        [index]="index">
+                    </app-task>
+                </div>
             </div>
             <button class="btn btn-primary">Hidden task completed</button>
             

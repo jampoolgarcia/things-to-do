@@ -1,5 +1,5 @@
 export interface TaskI {
     date: Date;
-    desciption: string;
+    description: string;
     isComplete: boolean;
 }

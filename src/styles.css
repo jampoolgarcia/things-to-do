@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-.card {
+.bg {
     max-width: 700px;
     margin: auto;
 }
+
+.desc {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}    
+

@@ -1,1 +1,18 @@
-<p>task works!</p>
+<div class="card p-1 shadow mb-3">
+    <div class="row no-gutters">
+        <div class="card-body">
+            <b>Date:</b> {{ task.date | date: 'dd MM yyyy' }}
+        </div>
+        <div class="card-body desc">
+            {{ task.description | uppercase }}
+        </div>
+        <div class="card-actions m-auto">
+            <button class="btn btn-success mr-2" (click)="onCheck()">
+                Completar
+            </button>
+            <button class="btn btn-danger mr-2" (click)="onDelete()">
+                Borrar
+            </button>
+        </div>
+    </div>
+</div>
