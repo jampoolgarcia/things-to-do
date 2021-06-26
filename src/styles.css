@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+.bg-freefire {
+    background-image: url('assets/bg-freefire.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.item {
+    background-color: rgba(0, 0, 255, 0.5);
+    padding: 3px;
+}
+
+label {
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.abs {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.rel {
+    position: relative;
+}
+
+.img-bg {
+    width: 10rem;
+}
