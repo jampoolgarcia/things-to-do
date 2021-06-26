@@ -7,11 +7,12 @@ import { TaskI } from 'src/app/model/task';
   templateUrl: './task-list.component.html',
   styles: ['']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent {
 
   public tasksCompleted: TaskI[] = [];
   public tasksNoComnpleted: TaskI[] = []; 
   public isShowInputTask: boolean = false;
+  public isShowCompleted: boolean = true;
   public desc: FormControl = new FormControl('', [Validators.required]);
 
   constructor() {}
@@ -24,7 +25,7 @@ export class TaskListComponent implements OnInit {
     const task: TaskI = {
       date: new Date(),
       description: this.desc.value,
-      isComplete: false
+      isCompleted: false
     }
     this.tasksNoComnpleted.push(task);
     this.desc.reset();
@@ -38,12 +39,13 @@ export class TaskListComponent implements OnInit {
   check(index:number){
     let task: TaskI = this.tasksNoComnpleted[index];
     task.date = new Date();
-    task.isComplete = true;
+    task.isCompleted = true;
     this.tasksCompleted.push(task);
     this.delete(index);
   }
 
-  ngOnInit(): void {
+  showCompleted(){
+    this.isShowCompleted = !this.isShowCompleted;
   }
 
 }

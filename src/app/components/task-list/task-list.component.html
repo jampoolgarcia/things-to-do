@@ -35,8 +35,14 @@
     <div class="row">
         <div class="col-12">
             <h2>To do</h2>
+            <button 
+                class="btn btn-primary mb-2"
+                (click)="showCompleted()">
+                <span *ngIf="isShowCompleted">Hidden task completed</span>
+                <span *ngIf="!isShowCompleted">Show task completed</span>
+            </button>
             <div class="row" *ngIf="tasksCompleted.length > 0; else NoTaskCompleted">
-                <div class="col-12 mb-2">
+                <div class="col-12 mb-2" *ngIf="isShowCompleted">
                     <app-task 
                         *ngFor="let task of tasksCompleted; index as index" 
                         [task]="task" 
@@ -44,7 +50,6 @@
                     </app-task>
                 </div>
             </div>
-            <button class="btn btn-primary">Hidden task completed</button>
             
         </div>
     </div>

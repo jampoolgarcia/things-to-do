@@ -10,3 +10,7 @@
     overflow: hidden !important;
 }    
 
+.isCompleted {
+    text-decoration: line-through !important;
+}
+
